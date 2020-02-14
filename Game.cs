@@ -10,6 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         private Player player;
         private List<Day> days;
+        private Day day;
         private int currentDay;
         private int menuOption;
         private int itemToBuy;
@@ -36,7 +37,7 @@ namespace LemonadeStand_3DayStarter
                 }
                 else if (menuOption == 3)
                 {
-
+                    player.CheckInventory(player.inventory);
                 }
                 else if (menuOption == 4)
                 {
@@ -71,6 +72,19 @@ namespace LemonadeStand_3DayStarter
             else
             {
                 itemToBuy = UserInterface.ItemToBuyMenu();
+            }
+        }
+
+        public void SellLemonade()
+        {
+            if (day.customer.payPreference < player.recipe.pricePerCup )
+            {
+                for (int i = 0; i < player.recipe.amountOfLemons; i++)
+                {
+                    player.inventory.lemons.Remove(player.inventory.lemons[0]);
+                    player.inventory.sugarCubes.Remove(player.inventory.sugarCubes[0]);
+                    player.inventory.iceCubes.Remove(player.inventory.iceCubes[0]);
+                }
             }
         }
     }

@@ -14,5 +14,10 @@ namespace LemonadeStand_3DayStarter
         {
             cupsLeftInPitcher = 0;
         }
+
+        public void AddCups(Recipe recipe)
+        {
+           
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         public Weather weather;
         public List<Customer> customers;
+        public Customer customer;
 
         public Day()
         {

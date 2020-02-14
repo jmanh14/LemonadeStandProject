@@ -24,5 +24,12 @@ namespace LemonadeStand_3DayStarter
         }
 
         // member methods (CAN DO)
+        public void CheckInventory(Inventory inventory)
+        {
+            Console.WriteLine($"Lemons: {inventory.lemons.Count}");
+            Console.WriteLine($"Sugar Cubes: {inventory.sugarCubes.Count}");
+            Console.WriteLine($"Ice Cubes: {inventory.iceCubes.Count}");
+            Console.WriteLine($"Cups: {inventory.cups.Count}");
+        }
     }
 }
