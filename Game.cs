@@ -14,42 +14,55 @@ namespace LemonadeStand_3DayStarter
         private int currentDay;
         private int menuOption;
         private int itemToBuy;
+        private string wouldYouLikeToContinue = "Y";
         Store store = new Store();
         public void PlayGame()
         {
             player = new Player();
+            player.name = UserInterface.GetUsersName();
             currentDay = 1;
             days = new List<Day>() { new Day()};
+            Console.WriteLine($"Welcome {player.name}, please enter your first recipe!");
+            player.recipe.CreateRecipe();
             for (int i = 0; i <= 7; i++) 
             {
-                Console.Write($"Day {currentDay}: ");
-                UserInterface.GetWeatherConditions(days[currentDay - 1]);
-                UserInterface.DisplayWallet(player.wallet);
-                menuOption = UserInterface.BuySellInvRecipeOption();
-                if (menuOption == 1)
+                while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
                 {
-                    itemToBuy = UserInterface.ItemToBuyMenu();
-                    Buy(itemToBuy);
-                }
-                else if (menuOption == 2)
-                {
-
-                }
-                else if (menuOption == 3)
-                {
-                    player.CheckInventory(player.inventory);
-                }
-                else if (menuOption == 4)
-                {
-
-                    Recipe recipe = new Recipe();
-                    UserInterface.DisplayRecipe(recipe);
+                    Console.Write($"Day {currentDay}: ");
+                    UserInterface.GetWeatherConditions(days[currentDay - 1]);
+                    UserInterface.DisplayWallet(player.wallet);
+                    menuOption = UserInterface.BuySellInvRecipeOption();
+                    MenuSelection(menuOption);
+                    wouldYouLikeToContinue = UserInterface.WouldYouLikeToContinue();
                 }
                 days.Add(new Day());
                 currentDay++;
             }
             Console.ReadLine();
            
+        }
+        private void MenuSelection(int menuOption)
+        {
+            if (menuOption == 1)
+            {
+                itemToBuy = UserInterface.ItemToBuyMenu();
+                Buy(itemToBuy);
+                player.pitcher.AddCups(player.recipe, player.inventory);
+            }
+            else if (menuOption == 2)
+            {
+                SellLemonade();
+            }
+            else if (menuOption == 3)
+            {
+                player.CheckInventory(player.inventory);
+            }
+            else if (menuOption == 4)
+            {
+
+                player.recipe.CreateRecipe();
+                UserInterface.DisplayRecipe(player.recipe);
+            }
         }
         private void Buy(int item)
         {
@@ -79,11 +92,10 @@ namespace LemonadeStand_3DayStarter
         {
             if (day.customer.payPreference < player.recipe.pricePerCup )
             {
-                for (int i = 0; i < player.recipe.amountOfLemons; i++)
+                for (int i = 0; i < player.pitcher.cupsLeftInPitcher; i++)
                 {
-                    player.inventory.lemons.Remove(player.inventory.lemons[0]);
-                    player.inventory.sugarCubes.Remove(player.inventory.sugarCubes[0]);
-                    player.inventory.iceCubes.Remove(player.inventory.iceCubes[0]);
+                    player.pitcher.cupsLeftInPitcher--;
+                    player.wallet.PayMoneyForItems(player.recipe.pricePerCup);
                 }
             }
         }

@@ -13,14 +13,15 @@ namespace LemonadeStand_3DayStarter
         public Wallet wallet;
         public string name;
         public Recipe recipe;
-        public Pitcher pitcher;
+        public Pitcher pitcher = new Pitcher();
 
         // constructor (SPAWNER)
         public Player()
         {
             inventory = new Inventory();
             wallet = new Wallet();
-            name = UserInterface.GetUsersName();
+            
+            recipe = new Recipe();
         }
 
         // member methods (CAN DO)

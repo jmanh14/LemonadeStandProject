@@ -51,7 +51,7 @@ namespace LemonadeStand_3DayStarter
 
         public static int ItemToBuyMenu()
         {
-            Console.WriteLine("[1]Lemons [2]Sugar cubes [3]Ice cubes [4]cups");
+            Console.WriteLine("[1]Lemons [2]Sugar cubes [3]Ice cubes [4]Cups");
             Console.Write(">> ");
             int choice = int.Parse(Console.ReadLine());
             return choice;
@@ -68,6 +68,13 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine($"2. Sugar Cubes: {recipe.amountOfSugarCubes}");
             Console.WriteLine($"3. Ice Cubes: {recipe.amountOfIceCubes}");
             Console.WriteLine($"4. Price per cup: ${recipe.pricePerCup}");
+        }
+
+        public static string WouldYouLikeToContinue()
+        {
+            Console.WriteLine("Press [y] to continue or [n] to move to the next day");
+            string moveOn = Console.ReadLine();
+            return moveOn;
         }
     }
 }

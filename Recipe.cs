@@ -16,7 +16,6 @@ namespace LemonadeStand_3DayStarter
 
         public Recipe()
         {
-            CreateRecipe();
         }
 
         public void CreateRecipe()
