@@ -23,5 +23,11 @@ namespace LemonadeStand_3DayStarter
 
             return quantityOfItem;
         }
+
+        public static void GetWeatherConditions(Day day)
+        {
+            Console.WriteLine($"It is currently {day.weather.temperature} and {day.weather.condition} out.");
+            Console.ReadLine();
+        }
     }
 }

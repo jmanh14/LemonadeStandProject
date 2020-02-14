@@ -8,5 +8,14 @@ namespace LemonadeStand_3DayStarter
 {
     class Day
     {
+        public Weather weather;
+        public List<Customer> customers;
+
+        public Day()
+        {
+           weather = new Weather();
+           customers = new List<Customer>() { new Customer(), new Customer(), new Customer(), new Customer() };
+        }
+        
     }
 }
