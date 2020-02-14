@@ -15,7 +15,7 @@ namespace LemonadeStand_3DayStarter
         Random random = new Random();
         //Constructor
         public Weather()
-        {
+        {         
             weatherConditons = new List<string>() { "Sunny", "Rainy", "Foggy", "Cloudy" };
             condition = weatherConditons.ElementAt(random.Next(0, 4));
             temperature = Gettemperature();

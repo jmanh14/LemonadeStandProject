@@ -20,6 +20,7 @@ namespace LemonadeStand_3DayStarter
         {
             inventory = new Inventory();
             wallet = new Wallet();
+            name = UserInterface.GetUsersName();
         }
 
         // member methods (CAN DO)

@@ -27,7 +27,47 @@ namespace LemonadeStand_3DayStarter
         public static void GetWeatherConditions(Day day)
         {
             Console.WriteLine($"It is currently {day.weather.temperature} and {day.weather.condition} out.");
-            Console.ReadLine();
+            
+        }
+
+        public static string GetUsersName()
+        {
+            Console.WriteLine("Hello and welcome to Lemonade Stand.");
+            Console.Write("Please enter your name >> ");
+            string name = Console.ReadLine();
+            return name;
+        }
+
+        public static int BuySellInvRecipeOption()
+        {
+            Console.WriteLine("[1]Buy products for your lemonade.");
+            Console.WriteLine("[2}Sell your lemonade.");
+            Console.WriteLine("[3]Check your inventory.");
+            Console.WriteLine("[4]Change recipe");
+            Console.Write(">> ");
+            int choice = int.Parse(Console.ReadLine());
+            return choice;
+        }
+
+        public static int ItemToBuyMenu()
+        {
+            Console.WriteLine("[1]Lemons [2]Sugar cubes [3]Ice cubes [4]cups");
+            Console.Write(">> ");
+            int choice = int.Parse(Console.ReadLine());
+            return choice;
+        } 
+
+        public static void DisplayWallet(Wallet wallet)
+        {
+            Console.WriteLine($"Current assets: ${wallet.Money}");
+        }
+      
+        public static void DisplayRecipe(Recipe recipe)
+        {
+            Console.WriteLine($"1. Lemons: {recipe.amountOfLemons}");
+            Console.WriteLine($"2. Sugar Cubes: {recipe.amountOfSugarCubes}");
+            Console.WriteLine($"3. Ice Cubes: {recipe.amountOfIceCubes}");
+            Console.WriteLine($"4. Price per cup: ${recipe.pricePerCup}");
         }
     }
 }
