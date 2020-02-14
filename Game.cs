@@ -10,12 +10,13 @@ namespace LemonadeStand_3DayStarter
     {
         private Player player;
         private List<Day> days;
-        private Day day;
+        private Day day = new Day();
         private int currentDay;
         private int menuOption;
         private int itemToBuy;
-        private string wouldYouLikeToContinue = "Y";
+        private string wouldYouLikeToContinue ;
         Store store = new Store();
+        Random random = new Random();
         public void PlayGame()
         {
             player = new Player();
@@ -26,6 +27,7 @@ namespace LemonadeStand_3DayStarter
             player.recipe.CreateRecipe();
             for (int i = 0; i <= 7; i++) 
             {
+                wouldYouLikeToContinue = "Y";
                 while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
                 {
                     Console.Write($"Day {currentDay}: ");
@@ -90,12 +92,19 @@ namespace LemonadeStand_3DayStarter
 
         public void SellLemonade()
         {
-            if (day.customer.payPreference < player.recipe.pricePerCup )
+            
+            for (int i = 0; i < player.pitcher.cupsLeftInPitcher; i++)
             {
-                for (int i = 0; i < player.pitcher.cupsLeftInPitcher; i++)
+                if (day.customer.payPreference >= player.recipe.pricePerCup )
                 {
+                    Console.WriteLine($"{day.customer.name} bought a cup");
                     player.pitcher.cupsLeftInPitcher--;
-                    player.wallet.PayMoneyForItems(player.recipe.pricePerCup);
+                    day.customers.Add(new Customer()) ;
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Price too high");
                 }
             }
         }

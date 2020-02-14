@@ -31,6 +31,7 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine($"Sugar Cubes: {inventory.sugarCubes.Count}");
             Console.WriteLine($"Ice Cubes: {inventory.iceCubes.Count}");
             Console.WriteLine($"Cups: {inventory.cups.Count}");
+            Console.WriteLine($"Total cups of lemonade: { pitcher.cupsLeftInPitcher}");
         }
     }
 }
