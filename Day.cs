@@ -10,14 +10,11 @@ namespace LemonadeStand_3DayStarter
     {
         public Weather weather;
         public List<Customer> customers;
-        public Customer customer;
-        Random rand = new Random();
-        public Day()
+        public Day(Random rng)
         {
-            
             weather = new Weather();
-            customers = new List<Customer>() { new Customer()};
-            customer = customers[rand.Next(customers.Count)];
+            customers = new List<Customer>() { new Customer(rng), new Customer(rng), new Customer(rng), new Customer(rng), new Customer(rng) };
+
         }
         
     }

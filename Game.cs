@@ -8,21 +8,23 @@ namespace LemonadeStand_3DayStarter
 {
     class Game
     {
+        
         private Player player;
         private List<Day> days;
-        private Day day = new Day();
+        private Day day;
         private int currentDay;
         private int menuOption;
         private int itemToBuy;
         private string wouldYouLikeToContinue ;
         Store store = new Store();
-        Random random = new Random();
+        public Random random = new Random();
         public void PlayGame()
         {
             player = new Player();
+            day = new Day(random);
             player.name = UserInterface.GetUsersName();
             currentDay = 1;
-            days = new List<Day>() { new Day()};
+            days = new List<Day>() { new Day(random)};
             Console.WriteLine($"Welcome {player.name}, please enter your first recipe!");
             player.recipe.CreateRecipe();
             for (int i = 0; i <= 7; i++) 
@@ -37,7 +39,7 @@ namespace LemonadeStand_3DayStarter
                     MenuSelection(menuOption);
                     wouldYouLikeToContinue = UserInterface.WouldYouLikeToContinue();
                 }
-                days.Add(new Day());
+                days.Add(new Day(random));
                 currentDay++;
             }
             Console.ReadLine();
@@ -48,7 +50,7 @@ namespace LemonadeStand_3DayStarter
             if (menuOption == 1)
             {
                 itemToBuy = UserInterface.ItemToBuyMenu();
-                Buy(itemToBuy);
+                BuyItems(itemToBuy);
                 player.pitcher.AddCups(player.recipe, player.inventory);
             }
             else if (menuOption == 2)
@@ -66,7 +68,7 @@ namespace LemonadeStand_3DayStarter
                 UserInterface.DisplayRecipe(player.recipe);
             }
         }
-        private void Buy(int item)
+        private void BuyItems(int item)
         {
             if (item == 1)
             {
@@ -90,16 +92,24 @@ namespace LemonadeStand_3DayStarter
             }
         }
 
+        public void DetermineBuying(Day day, double payPreference)
+        {
+            if (payPreference > 0 && payPreference < 1)
+            {
+
+            }
+        }
+
         public void SellLemonade()
         {
             
             for (int i = 0; i < player.pitcher.cupsLeftInPitcher; i++)
             {
-                if (day.customer.payPreference >= player.recipe.pricePerCup )
+                if (day.customers[i].payPreference >= player.recipe.pricePerCup )
                 {
-                    Console.WriteLine($"{day.customer.name} bought a cup");
+                    Console.WriteLine($"{day.customers[i].payPreference} bought a cup");
                     player.pitcher.cupsLeftInPitcher--;
-                    day.customers.Add(new Customer()) ;
+                    player.wallet.GetMoneyForLemonade(player.recipe.pricePerCup);
                     
                 }
                 else
