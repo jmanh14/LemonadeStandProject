@@ -29,7 +29,7 @@ namespace LemonadeStand_3DayStarter
             }
             else if (condition == "Rainy")
             {
-                temperature = random.Next(50, 60);
+                temperature = random.Next(30, 50);
             }
             else if (condition == "Foggy")
             {
@@ -42,5 +42,7 @@ namespace LemonadeStand_3DayStarter
             return temperature;
 
         }
+
+        
     }
 }

@@ -16,6 +16,7 @@ namespace LemonadeStand_3DayStarter
 
         public Recipe()
         {
+            
         }
 
         public void CreateRecipe()
@@ -32,6 +33,30 @@ namespace LemonadeStand_3DayStarter
             amountOfSugarCubes = sugarCubes;
             amountOfIceCubes = iceCubes;
             pricePerCup = cupPrice;
-        }      
+            DetermineSweetness(amountOfLemons, amountOfSugarCubes, amountOfIceCubes);
+        }
+        public void DetermineSweetness(int lemons, int sugarCubes, int iceCubes)
+        {
+            if (lemons >= 5 && sugarCubes < 5 && iceCubes >= 1)
+            {
+                sweetness = "Sour";
+            }
+            else if (lemons < 5 && sugarCubes >= 5 && iceCubes >= 1)
+            {
+                sweetness = "Sweet";
+            }
+            else if (lemons < 5 && sugarCubes < 5 && iceCubes >= 1)
+            {
+                sweetness = "Bland";
+            }
+            else if (lemons  >= 5 && sugarCubes >= 5 && iceCubes >= 5)
+            {
+                sweetness = "Watery";
+            }
+            else
+            {
+                sweetness = "Just Right";
+            }
+        }
     }
 }

@@ -51,7 +51,7 @@ namespace LemonadeStand_3DayStarter
             {
                 itemToBuy = UserInterface.ItemToBuyMenu();
                 BuyItems(itemToBuy);
-                player.pitcher.AddCups(player.recipe, player.inventory);
+                player.pitcher.AddCups(player.inventory);
             }
             else if (menuOption == 2)
             {
@@ -105,21 +105,29 @@ namespace LemonadeStand_3DayStarter
             
             for (int i = 0; i < player.pitcher.cupsLeftInPitcher; i++)
             {
-                if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference == player.recipe.sweetness)
+                try
                 {
-                    Console.WriteLine($"{day.customers[i].name} bought a cup");
-                    Console.WriteLine($"{day.customers[i].tastePreference}!");
-                    player.pitcher.cupsLeftInPitcher--;
-                    player.wallet.GetMoneyForLemonade(player.recipe.pricePerCup);
+                    if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference == player.recipe.sweetness)
+                    {
+                        Console.Write($"{day.customers[i].name} bought a cup");
+                        Console.WriteLine($" {day.customers[i].tastePreference}!");
+                        player.pitcher.cupsLeftInPitcher--;
+                        player.wallet.GetMoneyForLemonade(player.recipe.pricePerCup);
+                    }
+                    else if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference != player.recipe.sweetness)
+                    {
+                        Console.Write($"{day.customers[i].name} did not buy a cup");
+                        Console.WriteLine($" Not {day.customers[i].tastePreference}, too {player.recipe.sweetness}");
+                    }
+                    else
+                    {
+                        Console.Write($"{day.customers[i].name} did not buy a cup");
+                        Console.WriteLine(" Price too high");
+                    }
                 }
-                else if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference != player.recipe.sweetness) 
+                catch (ArgumentOutOfRangeException)
                 {
-                    Console.WriteLine($"{day.customers[i].name} did not buy a cup");
-                    Console.WriteLine($"Too {player.recipe.sweetness}");
-                }
-                else
-                {
-                    Console.WriteLine("Price too high");
+                    Console.WriteLine("No more customers!");
                 }
             }
         }

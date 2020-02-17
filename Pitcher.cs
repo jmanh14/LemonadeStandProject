@@ -15,7 +15,7 @@ namespace LemonadeStand_3DayStarter
             cupsLeftInPitcher = 0;
         }
 
-        public void AddCups(Recipe recipe, Inventory inventory)
+        public void AddCups(Inventory inventory)
         {
            while (inventory.lemons.Count > 0 && inventory.sugarCubes.Count > 0 && inventory.iceCubes.Count > 0 && inventory.cups.Count > 0)
             {
