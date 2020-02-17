@@ -49,13 +49,13 @@ namespace LemonadeStand_3DayStarter
             {
                 sweetness = "Bland";
             }
-            else if (lemons  >= 5 && sugarCubes >= 5 && iceCubes >= 5)
+            else if (iceCubes >= 5)
             {
                 sweetness = "Watery";
             }
-            else
+            else if (lemons == 5 && sugarCubes == 5 && iceCubes < 5)
             {
-                sweetness = "Just Right";
+                sweetness = "Balanced";
             }
         }
     }

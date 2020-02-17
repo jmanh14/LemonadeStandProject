@@ -15,7 +15,8 @@ namespace LemonadeStand_3DayStarter
         private int currentDay;
         private int menuOption;
         private int itemToBuy;
-        private string wouldYouLikeToContinue ;
+        private string wouldYouLikeToContinue = "Y";
+        private string playAgain = "Y";
         Store store = new Store();
         public Random random = new Random();
         public void PlayGame()
@@ -28,20 +29,27 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine($"Welcome {player.name}, please enter your first recipe!");
             player.recipe.CreateRecipe();
             UserInterface.DisplayRecipe(player.recipe);
-            for (int i = 0; i <= 7; i++) 
+            while (playAgain == "Y" || playAgain == "y")
             {
-                wouldYouLikeToContinue = "Y";
-                while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
+
+                for (int i = 0; i <= 7; i++)
                 {
-                    Console.Write($"Day {currentDay}: ");
-                    UserInterface.GetWeatherConditions(days[currentDay - 1]);
-                    UserInterface.DisplayWallet(player.wallet);
-                    menuOption = UserInterface.BuySellInvRecipeOption();
-                    MenuSelection(menuOption);
-                    wouldYouLikeToContinue = UserInterface.WouldYouLikeToContinue();
+
+                    while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
+                    {
+                        Console.Write($"Day {currentDay}: ");
+                        UserInterface.GetWeatherConditions(days[currentDay - 1]);
+                        UserInterface.DisplayWallet(player.wallet);
+                        menuOption = UserInterface.BuySellInvRecipeOption();
+                        MenuSelection(menuOption);
+                        wouldYouLikeToContinue = UserInterface.WouldYouLikeToContinue();
+                    }
+                    days.Add(new Day(random));
+                    currentDay++;
                 }
-                days.Add(new Day(random));
-                currentDay++;
+                Console.WriteLine("End of the week.");
+                Console.WriteLine($"You ended with a total of ${player.wallet.Money}");
+                playAgain = UserInterface.WouldYouLikeToContinue();
             }
             Console.ReadLine();
            
@@ -90,14 +98,6 @@ namespace LemonadeStand_3DayStarter
             else
             {
                 itemToBuy = UserInterface.ItemToBuyMenu();
-            }
-        }
-
-        public void DetermineBuying(Day day, double payPreference)
-        {
-            if (payPreference > 0 && payPreference < 1)
-            {
-
             }
         }
 
