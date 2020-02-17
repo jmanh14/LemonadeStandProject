@@ -14,6 +14,7 @@ namespace LemonadeStand_3DayStarter
         public double payPreference;
         public List<string> tastePreferences;
         public string tastePreference;
+        public Recipe recipe = new Recipe();
         public Customer(Random rng)
         {
             names = new List<string>() { "Justin", "Eddie", "Matt", "Joey", "Tarik", "Braden", "Nick", "Osman", "Gavin", "Cody" };
@@ -23,25 +24,24 @@ namespace LemonadeStand_3DayStarter
             name = names[rng.Next(names.Count)];
             tastePreference = tastePreferences[rng.Next(tastePreferences.Count)];
             names.Remove(name);
-            DetermineSweetness(Recipe recipe);
+            DetermineSweetness(recipe);
         }
 
-        //public void DetermineSweetness(Recipe recipe)
-        //{
-        //    if (recipe.amountOfLemons >= 5 && recipe.amountOfSugarCubes < 5 && recipe.amountOfIceCubes >= 1)
-        //    {
-        //        recipe.sweetness = "Sour";
-        //    }
-        //    else if (recipe.amountOfLemons < 5 && recipe.amountOfSugarCubes >= 5 && recipe.amountOfIceCubes >= 1)
-        //    {
-        //        recipe.sweetness = "Sweet";
-        //    }
-        //    else
-        //    {
-        //        recipe.sweetness = "Just Right";
-        //    }
-        //    return recipe.sweetness;
-        //}
+        public void DetermineSweetness(Recipe recipe)
+        {
+            if (recipe.amountOfLemons >= 5 && recipe.amountOfSugarCubes < 5 && recipe.amountOfIceCubes >= 1)
+            {
+                recipe.sweetness = "Sour";
+            }
+            else if (recipe.amountOfLemons < 5 && recipe.amountOfSugarCubes >= 5 && recipe.amountOfIceCubes >= 1)
+            {
+                recipe.sweetness = "Sweet";
+            }
+            else
+            {
+                recipe.sweetness = "Just Right";
+            }
+        }
 
 
 
