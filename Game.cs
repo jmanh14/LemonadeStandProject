@@ -107,7 +107,7 @@ namespace LemonadeStand_3DayStarter
             {
                 if (day.customers[i].payPreference >= player.recipe.pricePerCup )
                 {
-                    Console.WriteLine($"{day.customers[i].payPreference} bought a cup");
+                    Console.WriteLine($"{day.customers[i].name} bought a cup");
                     player.pitcher.cupsLeftInPitcher--;
                     player.wallet.GetMoneyForLemonade(player.recipe.pricePerCup);
                     
