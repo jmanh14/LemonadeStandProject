@@ -12,7 +12,7 @@ namespace LemonadeStand_3DayStarter
         public int amountOfSugarCubes;
         public int amountOfIceCubes;
         public double pricePerCup;
-
+        public string sweetness;
 
         public Recipe()
         {
@@ -32,6 +32,6 @@ namespace LemonadeStand_3DayStarter
             amountOfSugarCubes = sugarCubes;
             amountOfIceCubes = iceCubes;
             pricePerCup = cupPrice;
-        }
+        }      
     }
 }

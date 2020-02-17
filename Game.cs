@@ -105,12 +105,17 @@ namespace LemonadeStand_3DayStarter
             
             for (int i = 0; i < player.pitcher.cupsLeftInPitcher; i++)
             {
-                if (day.customers[i].payPreference >= player.recipe.pricePerCup )
+                if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference == player.recipe.sweetness)
                 {
                     Console.WriteLine($"{day.customers[i].name} bought a cup");
+                    Console.WriteLine($"{day.customers[i].tastePreference}!");
                     player.pitcher.cupsLeftInPitcher--;
                     player.wallet.GetMoneyForLemonade(player.recipe.pricePerCup);
-                    
+                }
+                else if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference != player.recipe.sweetness) 
+                {
+                    Console.WriteLine($"{day.customers[i].name} did not buy a cup");
+                    Console.WriteLine($"Too {player.recipe.sweetness}");
                 }
                 else
                 {
