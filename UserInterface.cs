@@ -64,6 +64,7 @@ namespace LemonadeStand_3DayStarter
       
         public static void DisplayRecipe(Recipe recipe)
         {
+            Console.Clear();
             Console.WriteLine($"1. Lemons: {recipe.amountOfLemons}");
             Console.WriteLine($"2. Sugar Cubes: {recipe.amountOfSugarCubes}");
             Console.WriteLine($"3. Ice Cubes: {recipe.amountOfIceCubes}");

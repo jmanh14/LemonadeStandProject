@@ -27,6 +27,7 @@ namespace LemonadeStand_3DayStarter
             days = new List<Day>() { new Day(random)};
             Console.WriteLine($"Welcome {player.name}, please enter your first recipe!");
             player.recipe.CreateRecipe();
+            UserInterface.DisplayRecipe(player.recipe);
             for (int i = 0; i <= 7; i++) 
             {
                 wouldYouLikeToContinue = "Y";
@@ -109,20 +110,20 @@ namespace LemonadeStand_3DayStarter
                 {
                     if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference == player.recipe.sweetness)
                     {
-                        Console.Write($"{day.customers[i].name} bought a cup");
-                        Console.WriteLine($" {day.customers[i].tastePreference}!");
+                        Console.Write($"{day.customers[i].fullName} bought a cup");
+                        Console.WriteLine($" ({day.customers[i].tastePreference}!)");
                         player.pitcher.cupsLeftInPitcher--;
                         player.wallet.GetMoneyForLemonade(player.recipe.pricePerCup);
                     }
                     else if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference != player.recipe.sweetness)
                     {
-                        Console.Write($"{day.customers[i].name} did not buy a cup");
-                        Console.WriteLine($" Not {day.customers[i].tastePreference}, too {player.recipe.sweetness}");
+                        Console.Write($"{day.customers[i].fullName} did not buy a cup");
+                        Console.WriteLine($" (Not {day.customers[i].tastePreference}, too {player.recipe.sweetness})");
                     }
                     else
                     {
-                        Console.Write($"{day.customers[i].name} did not buy a cup");
-                        Console.WriteLine(" Price too high");
+                        Console.Write($"{day.customers[i].fullName} did not buy a cup");
+                        Console.WriteLine(" (Price too high)");
                     }
                 }
                 catch (ArgumentOutOfRangeException)

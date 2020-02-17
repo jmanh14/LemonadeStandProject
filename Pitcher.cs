@@ -18,12 +18,12 @@ namespace LemonadeStand_3DayStarter
         public void AddCups(Inventory inventory)
         {
            while (inventory.lemons.Count > 0 && inventory.sugarCubes.Count > 0 && inventory.iceCubes.Count > 0 && inventory.cups.Count > 0)
-            {
-                cupsLeftInPitcher++;
+            { 
                 inventory.lemons.Remove(inventory.lemons[0]);
                 inventory.sugarCubes.Remove(inventory.sugarCubes[0]);
                 inventory.iceCubes.Remove(inventory.iceCubes[0]);
                 inventory.cups.Remove(inventory.cups[0]);
+                cupsLeftInPitcher++;
             }
         }
     }

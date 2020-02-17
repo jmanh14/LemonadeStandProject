@@ -12,7 +12,7 @@ namespace LemonadeStand_3DayStarter
         public List<Customer> customers;
         public Day(Random rng)
         {
-            weather = new Weather();
+            weather = new Weather(rng);
             customers = new List<Customer>() { };
             DetermineAmountOfCustomers(weather, rng);
         }
@@ -35,7 +35,7 @@ namespace LemonadeStand_3DayStarter
             {
                 amountOfCustomers = 3;
             }
-            for (int i = 0; i < amountOfCustomers; i++)
+            for (int i = 0; i <= amountOfCustomers; i++)
             {
                 customers.Add(new Customer(randomNum));
             }
