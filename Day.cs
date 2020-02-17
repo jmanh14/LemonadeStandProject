@@ -16,7 +16,7 @@ namespace LemonadeStand_3DayStarter
             customers = new List<Customer>() { };
             DetermineAmountOfCustomers(weather, rng);
         }
-        public void DetermineAmountOfCustomers(Weather weathern ,Random randomNum)
+        public void DetermineAmountOfCustomers(Weather weather ,Random randomNum)
         {
             int amountOfCustomers = 0;
             if (weather.temperature >= 70)
@@ -35,7 +35,7 @@ namespace LemonadeStand_3DayStarter
             {
                 amountOfCustomers = 3;
             }
-            for (int i = 0; i <= amountOfCustomers; i++)
+            for (int i = 0; i < amountOfCustomers; i++)
             {
                 customers.Add(new Customer(randomNum));
             }
