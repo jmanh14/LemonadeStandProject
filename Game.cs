@@ -32,11 +32,11 @@ namespace LemonadeStand_3DayStarter
             player.recipe.CreateRecipe();
             UserInterface.DisplayRecipe(player.recipe);
 
-            for (int i = 0; i <= amountOfDays; i++)
+            for (int i = 0; i < amountOfDays; i++)
             {
                 wouldYouLikeToContinue = "Y";
-                player.pitcher.cupsOfLemonade = 0;
-                player.pitcher.pitchersOfLemonade = 0;
+                player.pitcher.cupsOfLemonade = player.pitcher.pitchersOfLemonade * player.pitcher.cupsPerPitcher;
+                player.pitcher.pitchersOfLemonade /= 2;
                 while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
                 {
                     if (player.wallet.Money > 0)
@@ -70,14 +70,14 @@ namespace LemonadeStand_3DayStarter
         {
             if (menuOption == 1)
             {
-                itemToBuy = UserInterface.ItemToBuyMenu();
+                itemToBuy = UserInterface.ItemToBuyMenu(store);
                 player.BuyItems(store,player,itemToBuy);
                 player.pitcher.AddCups(player);
             }
             else if (menuOption == 2)
             {
                 player.SellLemonade(days[currentDay -1]);
-                wouldYouLikeToContinue = "N";
+                return;
             }
             else if (menuOption == 3)
             {

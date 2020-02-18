@@ -53,7 +53,7 @@ namespace LemonadeStand_3DayStarter
             }
             else
             {
-                item = UserInterface.ItemToBuyMenu();
+                item = UserInterface.ItemToBuyMenu(store);
                 BuyItems(store, player, item);
                 pitcher.AddCups(player);
             }
@@ -70,12 +70,14 @@ namespace LemonadeStand_3DayStarter
                     {
                         if (day.customers[i].payPreference >= recipe.pricePerCup && day.customers[i].tastePreference == recipe.sweetness)
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.Write($"{day.customers[i].fullName} bought a cup");
                             Console.WriteLine($" ({day.customers[i].tastePreference}!)");
                             pitcher.cupsOfLemonade--;
                             inventory.cups.Remove(inventory.cups[0]);
                             buyerCounter++;
                             wallet.GetMoneyForLemonade(recipe.pricePerCup);
+                            Console.ResetColor();
                         }
                         else if (day.customers[i].payPreference >= recipe.pricePerCup && day.customers[i].tastePreference != recipe.sweetness)
                         {
@@ -84,8 +86,10 @@ namespace LemonadeStand_3DayStarter
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write($"{day.customers[i].fullName} did not buy a cup");
                             Console.WriteLine(" (Price too high)");
+                            Console.ResetColor();
                         }
                     }
                     catch (ArgumentOutOfRangeException)
@@ -103,6 +107,7 @@ namespace LemonadeStand_3DayStarter
             }
 
             Console.WriteLine($"{buyerCounter} out of {day.customers.Count} customers bought lemonade.");
+            return;
         }
     }
 }

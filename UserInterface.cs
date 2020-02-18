@@ -56,10 +56,10 @@ namespace LemonadeStand_3DayStarter
             }
         }
 
-        public static int ItemToBuyMenu()
+        public static int ItemToBuyMenu(Store store)
         {
             Console.Clear();
-            Console.WriteLine("[1]Lemons [2]Sugar cubes [3]Ice cubes [4]Cups");
+            Console.WriteLine($"[1]Lemons(${store.pricePerLemon}) \n[2]Sugar cubes(${store.pricePerSugarCube}) \n[3]Ice cubes(${store.pricePerIceCube}) \n[4]Cups(${store.pricePerCup})");
             Console.Write(">> ");
             int choice = int.Parse(Console.ReadLine());
             return choice;
@@ -67,7 +67,9 @@ namespace LemonadeStand_3DayStarter
 
         public static void DisplayWallet(Wallet wallet)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Current assets: ${wallet.Money}");
+            Console.ResetColor();
         }
       
         public static void DisplayRecipe(Recipe recipe)

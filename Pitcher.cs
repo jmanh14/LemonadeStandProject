@@ -10,7 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         public int pitchersOfLemonade;
         public int cupsOfLemonade;
-        private int cupsPerPitcher = 25;
+        public int cupsPerPitcher = 25;
         public Pitcher()
         {
             pitchersOfLemonade = 0;

@@ -21,7 +21,6 @@ namespace LemonadeStand_3DayStarter
 
         public void CreateRecipe()
         {
-            Console.Clear();
             try
             {
                 Console.Write("1. Lemons: ");
