@@ -36,11 +36,11 @@ namespace LemonadeStand_3DayStarter
             {
                 wouldYouLikeToContinue = "Y";
                 player.pitcher.cupsLeftInPitcher = 0;
-                while (player.wallet.Money > 0)
-                {
-                    while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
-                    {
 
+                while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
+                {
+                    if (player.wallet.Money > 0)
+                    {
                         Console.Clear();
                         Console.Write($"Day {currentDay}: ");
                         UserInterface.GetWeatherConditions(days[currentDay - 1]);
@@ -50,11 +50,15 @@ namespace LemonadeStand_3DayStarter
                         MenuSelection(menuOption);
                         wouldYouLikeToContinue = UserInterface.WouldYouLikeToContinue();
                     }
+                    else
+                    {
+                        Console.WriteLine("You've run out of money!");
+                        return;
+                    }
+                }
                     days.Add(new Day(random));
                     currentDay++;
-                }
-                Console.WriteLine("Out of money!");
-                return;
+               
             }
             Console.WriteLine("End of the Game.");
             Console.WriteLine($"You ended with a total of ${player.wallet.Money}");
@@ -72,7 +76,7 @@ namespace LemonadeStand_3DayStarter
             }
             else if (menuOption == 2)
             {
-                player.SellLemonade(day);
+                player.SellLemonade(days[currentDay -1]);
             }
             else if (menuOption == 3)
             {

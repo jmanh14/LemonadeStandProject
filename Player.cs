@@ -60,7 +60,7 @@ namespace LemonadeStand_3DayStarter
         }
         public void SellLemonade(Day day)
         {
-
+            int buyerCounter = 0;
 
             for (int i = 0; i < day.customers.Count; i++)
             {
@@ -73,17 +73,13 @@ namespace LemonadeStand_3DayStarter
                             Console.Write($"{day.customers[i].fullName} bought a cup");
                             Console.WriteLine($" ({day.customers[i].tastePreference}!)");
                             pitcher.cupsLeftInPitcher--;
+                            buyerCounter++;
                             wallet.GetMoneyForLemonade(recipe.pricePerCup);
                         }
                         else if (day.customers[i].payPreference >= recipe.pricePerCup && day.customers[i].tastePreference != recipe.sweetness)
                         {
                             Console.Write($"{day.customers[i].fullName} did not buy a cup");
                             Console.WriteLine($" (Not {day.customers[i].tastePreference}, too {recipe.sweetness})");
-                        }
-                        else if (pitcher.cupsLeftInPitcher == 0)
-                        {
-                            Console.Write($"{day.customers[i].fullName} did not buy a cup");
-                            Console.WriteLine(" (Out of lemonade)");
                         }
                         else
                         {
@@ -100,9 +96,12 @@ namespace LemonadeStand_3DayStarter
                 else
                 {
                     Console.WriteLine("No lemonade left to sell!");
+                    Console.WriteLine($"{buyerCounter} out of {day.customers.Count} customers bought lemonade.");
+                    return;
                 }
             }
-          
+
+            Console.WriteLine($"{buyerCounter} out of {day.customers.Count} customers bought lemonade.");
         }
     }
 }
