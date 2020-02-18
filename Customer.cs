@@ -21,7 +21,7 @@ namespace LemonadeStand_3DayStarter
         {
             firstNames = new List<string>() { "Justin", "Eddie", "Matt", "Joey", "Tarik", "Braden", "Nick", "Osman", "Gavin", "Cody", "James", "John", "Paula", "Jackson", "Brooke", "Jamie", "Jared", "Brad", "Tom", "Linda", "Doug"};
             lastNames = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-            payPreferences = new List<double>() { .05, .1, .15, .2, .25, .3, .35, .4, .45, .5 , .5,.55, .6, .65, .7, .75, .8, .85, .9, .95, 1};
+            payPreferences = new List<double>() { .25, .3, .35, .4, .45, .5 , .5,.55, .6, .65, .7, .75, .8, .85, .9, .95, 1 , 1.25, 1.5, 1.75, 2};
             tastePreferences = new List<string>() { "Sweet", "Sour", "Balanced" , "Bland", "Watery"};
             payPreference = payPreferences[rng.Next(payPreferences.Count)];
             firstName = firstNames[rng.Next(firstNames.Count)];
