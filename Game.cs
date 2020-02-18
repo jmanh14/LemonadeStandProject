@@ -16,8 +16,8 @@ namespace LemonadeStand_3DayStarter
         private int itemToBuy;
         private string wouldYouLikeToContinue = "Y";
         Store store = new Store();
-        private Day day;
         public Random random = new Random();
+        private Day day; 
         public void PlayGame()
         {
             player = new Player();
@@ -55,12 +55,12 @@ namespace LemonadeStand_3DayStarter
             if (menuOption == 1)
             {
                 itemToBuy = UserInterface.ItemToBuyMenu();
-                BuyItems(itemToBuy);
+                player.BuyItems(store,player,itemToBuy);
                 player.pitcher.AddCups(player.inventory);
             }
             else if (menuOption == 2)
             {
-                SellLemonade();
+                player.SellLemonade(day);
             }
             else if (menuOption == 3)
             {
@@ -73,61 +73,9 @@ namespace LemonadeStand_3DayStarter
                 UserInterface.DisplayRecipe(player.recipe);
             }
         }
-        private void BuyItems(int item)
-        {
-            if (item == 1)
-            {
-                store.SellLemons(player);
-            }
-            else if (item == 2)
-            {
-                store.SellSugarCubes(player);
-            }
-            else if (item == 3)
-            {
-                store.SellIceCubes(player);
-            }
-            else if (item == 4)
-            {
-                store.SellCups(player);
-            }
-            else
-            {
-                itemToBuy = UserInterface.ItemToBuyMenu();
-            }
-        }
+       
 
-        public void SellLemonade()
-        {
-
-            for (int i = 0; i < player.pitcher.cupsLeftInPitcher; i++)
-            {
-                try
-                {
-                    if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference == player.recipe.sweetness)
-                    {
-                        Console.Write($"{day.customers[i].fullName} bought a cup");
-                        Console.WriteLine($" ({day.customers[i].tastePreference}!)");
-                        player.pitcher.cupsLeftInPitcher--;
-                        player.wallet.GetMoneyForLemonade(player.recipe.pricePerCup);
-                    }
-                    else if (day.customers[i].payPreference >= player.recipe.pricePerCup && day.customers[i].tastePreference != player.recipe.sweetness)
-                    {
-                        Console.Write($"{day.customers[i].fullName} did not buy a cup");
-                        Console.WriteLine($" (Not {day.customers[i].tastePreference}, too {player.recipe.sweetness})");
-                    }
-                    else
-                    {
-                        Console.Write($"{day.customers[i].fullName} did not buy a cup");
-                        Console.WriteLine(" (Price too high)");
-                    }
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    Console.WriteLine("No more customers!");
-                }
-            }
-        }
+        
     }
 }
 
