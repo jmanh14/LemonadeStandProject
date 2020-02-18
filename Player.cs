@@ -27,11 +27,11 @@ namespace LemonadeStand_3DayStarter
         // member methods (CAN DO)
         public void CheckInventory(Inventory inventory)
         {
-            Console.WriteLine($"Lemons: {inventory.lemons.Count}");
-            Console.WriteLine($"Sugar Cubes: {inventory.sugarCubes.Count}");
-            Console.WriteLine($"Ice Cubes: {inventory.iceCubes.Count}");
-            Console.WriteLine($"Cups: {inventory.cups.Count}");
-            Console.WriteLine($"Total cups of lemonade: { pitcher.cupsLeftInPitcher}");
+            Console.WriteLine($"1. Lemons: {inventory.lemons.Count}");
+            Console.WriteLine($"2. Sugar Cubes: {inventory.sugarCubes.Count}");
+            Console.WriteLine($"3. Ice Cubes: {inventory.iceCubes.Count}");
+            Console.WriteLine($"4. Cups: {inventory.cups.Count}");
+            Console.WriteLine($"5. Total cups of lemonade: { pitcher.cupsLeftInPitcher}");
         }
         public void BuyItems(Store store, Player player, int item)
         {
@@ -61,33 +61,48 @@ namespace LemonadeStand_3DayStarter
         public void SellLemonade(Day day)
         {
 
-            for (int i = 0; i < pitcher.cupsLeftInPitcher; i++)
+
+            for (int i = 0; i < day.customers.Count; i++)
             {
-                try
+                if (pitcher.cupsLeftInPitcher > 0)
                 {
-                    if (day.customers[i].payPreference >= recipe.pricePerCup && day.customers[i].tastePreference == recipe.sweetness)
+                    try
                     {
-                        Console.Write($"{day.customers[i].fullName} bought a cup");
-                        Console.WriteLine($" ({day.customers[i].tastePreference}!)");
-                        pitcher.cupsLeftInPitcher--;
-                        wallet.GetMoneyForLemonade(recipe.pricePerCup);
+                        if (day.customers[i].payPreference >= recipe.pricePerCup && day.customers[i].tastePreference == recipe.sweetness)
+                        {
+                            Console.Write($"{day.customers[i].fullName} bought a cup");
+                            Console.WriteLine($" ({day.customers[i].tastePreference}!)");
+                            pitcher.cupsLeftInPitcher--;
+                            wallet.GetMoneyForLemonade(recipe.pricePerCup);
+                        }
+                        else if (day.customers[i].payPreference >= recipe.pricePerCup && day.customers[i].tastePreference != recipe.sweetness)
+                        {
+                            Console.Write($"{day.customers[i].fullName} did not buy a cup");
+                            Console.WriteLine($" (Not {day.customers[i].tastePreference}, too {recipe.sweetness})");
+                        }
+                        else if (pitcher.cupsLeftInPitcher == 0)
+                        {
+                            Console.Write($"{day.customers[i].fullName} did not buy a cup");
+                            Console.WriteLine(" (Out of lemonade)");
+                        }
+                        else
+                        {
+                            Console.Write($"{day.customers[i].fullName} did not buy a cup");
+                            Console.WriteLine(" (Price too high)");
+                        }
                     }
-                    else if (day.customers[i].payPreference >= recipe.pricePerCup && day.customers[i].tastePreference != recipe.sweetness)
+                    catch (ArgumentOutOfRangeException)
                     {
-                        Console.Write($"{day.customers[i].fullName} did not buy a cup");
-                        Console.WriteLine($" (Not {day.customers[i].tastePreference}, too {recipe.sweetness})");
-                    }
-                    else
-                    {
-                        Console.Write($"{day.customers[i].fullName} did not buy a cup");
-                        Console.WriteLine(" (Price too high)");
+                        Console.WriteLine("No more customers!");
+                        return;
                     }
                 }
-                catch (ArgumentOutOfRangeException)
+                else
                 {
-                    Console.WriteLine("No more customers!");
+                    Console.WriteLine("No lemonade left to sell!");
                 }
             }
+          
         }
     }
 }

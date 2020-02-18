@@ -10,6 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         public Weather weather;
         public List<Customer> customers;
+
         public Day(Random rng)
         {
             weather = new Weather(rng);
@@ -21,19 +22,19 @@ namespace LemonadeStand_3DayStarter
             int amountOfCustomers = 0;
             if (weather.temperature >= 70)
             {
-                amountOfCustomers = 10;
+                amountOfCustomers = 50;
             }
             else if (weather.temperature < 70 && weather.temperature >= 60)
             {
-                amountOfCustomers = 8;
+                amountOfCustomers = 30;
             }
             else if (weather.temperature < 60 && weather.temperature >= 50)
             {
-                amountOfCustomers = 6;
+                amountOfCustomers = 20;
             }
             else
             {
-                amountOfCustomers = 3;
+                amountOfCustomers = 10;
             }
             for (int i = 0; i < amountOfCustomers; i++)
             {

@@ -40,17 +40,25 @@ namespace LemonadeStand_3DayStarter
 
         public static int BuySellInvRecipeOption()
         {
-            Console.WriteLine("[1]Buy products for your lemonade.");
-            Console.WriteLine("[2}Sell your lemonade.");
-            Console.WriteLine("[3]Check your inventory.");
-            Console.WriteLine("[4]Change recipe");
-            Console.Write(">> ");
-            int choice = int.Parse(Console.ReadLine());
-            return choice;
+            try
+            {
+                Console.WriteLine("[1]Buy products for your lemonade.");
+                Console.WriteLine("[2}Sell your lemonade.");
+                Console.WriteLine("[3]Check your inventory.");
+                Console.WriteLine("[4]Change recipe");
+                Console.Write(">> ");
+                int choice = int.Parse(Console.ReadLine());
+                return choice;
+            }
+            catch (FormatException)
+            {
+                return BuySellInvRecipeOption();
+            }
         }
 
         public static int ItemToBuyMenu()
         {
+            Console.Clear();
             Console.WriteLine("[1]Lemons [2]Sugar cubes [3]Ice cubes [4]Cups");
             Console.Write(">> ");
             int choice = int.Parse(Console.ReadLine());
@@ -65,10 +73,14 @@ namespace LemonadeStand_3DayStarter
         public static void DisplayRecipe(Recipe recipe)
         {
             Console.Clear();
+            Console.WriteLine("RECIPE");
+            Console.WriteLine("-------------------");
             Console.WriteLine($"1. Lemons: {recipe.amountOfLemons}");
             Console.WriteLine($"2. Sugar Cubes: {recipe.amountOfSugarCubes}");
             Console.WriteLine($"3. Ice Cubes: {recipe.amountOfIceCubes}");
             Console.WriteLine($"4. Price per cup: ${recipe.pricePerCup}");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
         }
 
         public static string WouldYouLikeToContinue()
@@ -76,6 +88,27 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Press [y] to continue or [n] to move to the next day");
             string moveOn = Console.ReadLine();
             return moveOn;
+        }
+
+        public static int GetNumberOfDays()
+        {
+            Console.Clear();
+            try
+            {
+                Console.WriteLine("How many days would you like to play for? ");
+                int amountOfDays = int.Parse(Console.ReadLine());
+                return amountOfDays;
+            }
+            catch (FormatException)
+            {
+                return GetNumberOfDays();  
+            }
+            
+        }
+
+        public static void DisplayCupsOfLemonade(Pitcher pitcher)
+        {
+            Console.WriteLine($"Cups Left: {pitcher.cupsLeftInPitcher}");
         }
     }
 }
