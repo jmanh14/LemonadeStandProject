@@ -106,9 +106,9 @@ namespace LemonadeStand_3DayStarter
             
         }
 
-        public static void DisplayCupsOfLemonade(Pitcher pitcher)
+        public static void DisplayCupsOfLemonade(Player player)
         {
-            Console.WriteLine($"Cups Left: {pitcher.cupsLeftInPitcher}");
+            Console.WriteLine($"Cups Left: {player.inventory.cups.Count}");
         }
     }
 }

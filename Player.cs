@@ -30,8 +30,8 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine($"1. Lemons: {inventory.lemons.Count}");
             Console.WriteLine($"2. Sugar Cubes: {inventory.sugarCubes.Count}");
             Console.WriteLine($"3. Ice Cubes: {inventory.iceCubes.Count}");
-            Console.WriteLine($"4. Cups: {inventory.cups.Count}");
-            Console.WriteLine($"5. Total cups of lemonade: { pitcher.cupsLeftInPitcher}");
+            Console.WriteLine($"4. Total cups of lemonade: { pitcher.cupsOfLemonade}");
+            Console.WriteLine($"5. Total pitchers of lemonade: {pitcher.pitchersOfLemonade}");
         }
         public void BuyItems(Store store, Player player, int item)
         {
@@ -55,7 +55,7 @@ namespace LemonadeStand_3DayStarter
             {
                 item = UserInterface.ItemToBuyMenu();
                 BuyItems(store, player, item);
-                pitcher.AddCups(player.inventory);
+                pitcher.AddCups(player);
             }
         }
         public void SellLemonade(Day day)
@@ -64,7 +64,7 @@ namespace LemonadeStand_3DayStarter
 
             for (int i = 0; i < day.customers.Count; i++)
             {
-                if (pitcher.cupsLeftInPitcher > 0)
+                if (pitcher.cupsOfLemonade > 0 && inventory.cups.Count > 0)
                 {
                     try
                     {
@@ -72,7 +72,8 @@ namespace LemonadeStand_3DayStarter
                         {
                             Console.Write($"{day.customers[i].fullName} bought a cup");
                             Console.WriteLine($" ({day.customers[i].tastePreference}!)");
-                            pitcher.cupsLeftInPitcher--;
+                            pitcher.cupsOfLemonade--;
+                            inventory.cups.Remove(inventory.cups[0]);
                             buyerCounter++;
                             wallet.GetMoneyForLemonade(recipe.pricePerCup);
                         }

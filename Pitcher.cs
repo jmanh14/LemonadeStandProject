@@ -8,23 +8,35 @@ namespace LemonadeStand_3DayStarter
 {
     class Pitcher
     {
-        public int cupsLeftInPitcher;
-
+        public int pitchersOfLemonade;
+        public int cupsOfLemonade;
+        private int cupsPerPitcher = 25;
         public Pitcher()
         {
-            cupsLeftInPitcher = 0;
+            pitchersOfLemonade = 0;
+            cupsOfLemonade = 0;
         }
 
-        public void AddCups(Inventory inventory)
+        public void AddCups(Player player)
         {
-           while (inventory.lemons.Count > 0 && inventory.sugarCubes.Count > 0 && inventory.iceCubes.Count > 0 && inventory.cups.Count > 0)
-            { 
-                inventory.lemons.Remove(inventory.lemons[0]);
-                inventory.sugarCubes.Remove(inventory.sugarCubes[0]);
-                inventory.iceCubes.Remove(inventory.iceCubes[0]);
-                inventory.cups.Remove(inventory.cups[0]);
-                cupsLeftInPitcher++;
+            while (player.inventory.lemons.Count > 0 && player.inventory.sugarCubes.Count > 0 && player.inventory.iceCubes.Count > 0 && player.inventory.cups.Count > 0)
+            {
+                try
+                {
+                    player.inventory.lemons.RemoveRange(0, player.recipe.amountOfLemons);
+                    player.inventory.sugarCubes.RemoveRange(0, player.recipe.amountOfSugarCubes);
+                    player.inventory.iceCubes.RemoveRange(0, player.recipe.amountOfIceCubes);
+                    //player.inventory.cups.Remove(player.inventory.cups[0]);
+                    pitchersOfLemonade++;
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Out of Product!");
+                    break;
+                }
             }
+            
+            cupsOfLemonade = pitchersOfLemonade * cupsPerPitcher;
         }
     }
 }

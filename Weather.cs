@@ -17,7 +17,7 @@ namespace LemonadeStand_3DayStarter
         public Weather(Random rng)
         {         
             weatherConditons = new List<string>() { "Sunny", "Rainy", "Foggy", "Cloudy" };
-            condition = weatherConditons.ElementAt(rng.Next(0, 4));
+            condition = weatherConditons.ElementAt(rng.Next(0, weatherConditons.Count));
             temperature = Gettemperature(rng);
         }
         //Member methods (CAN DO)

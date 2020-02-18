@@ -35,8 +35,8 @@ namespace LemonadeStand_3DayStarter
             for (int i = 0; i <= amountOfDays; i++)
             {
                 wouldYouLikeToContinue = "Y";
-                player.pitcher.cupsLeftInPitcher = 0;
-
+                player.pitcher.cupsOfLemonade = 0;
+                player.pitcher.pitchersOfLemonade = 0;
                 while (wouldYouLikeToContinue == "Y" || wouldYouLikeToContinue == "y")
                 {
                     if (player.wallet.Money > 0)
@@ -45,7 +45,7 @@ namespace LemonadeStand_3DayStarter
                         Console.Write($"Day {currentDay}: ");
                         UserInterface.GetWeatherConditions(days[currentDay - 1]);
                         UserInterface.DisplayWallet(player.wallet);
-                        UserInterface.DisplayCupsOfLemonade(player.pitcher);
+                        UserInterface.DisplayCupsOfLemonade(player);
                         menuOption = UserInterface.BuySellInvRecipeOption();
                         MenuSelection(menuOption);
                         wouldYouLikeToContinue = UserInterface.WouldYouLikeToContinue();
@@ -72,11 +72,12 @@ namespace LemonadeStand_3DayStarter
             {
                 itemToBuy = UserInterface.ItemToBuyMenu();
                 player.BuyItems(store,player,itemToBuy);
-                player.pitcher.AddCups(player.inventory);
+                player.pitcher.AddCups(player);
             }
             else if (menuOption == 2)
             {
                 player.SellLemonade(days[currentDay -1]);
+                wouldYouLikeToContinue = "N";
             }
             else if (menuOption == 3)
             {
