@@ -110,7 +110,7 @@ namespace LemonadeStand_3DayStarter
 
         public static void DisplayCupsOfLemonade(Player player)
         {
-            Console.WriteLine($"Cups Left: {player.inventory.cups.Count}");
+            Console.WriteLine($"Plastic Cups Left: {player.inventory.cups.Count}");
         }
     }
 }
