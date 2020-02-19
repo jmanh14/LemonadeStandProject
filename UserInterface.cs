@@ -8,6 +8,15 @@ namespace LemonadeStand_3DayStarter
 {
     static class UserInterface
     {
+        public static void DisplayCurrentDay(int currentDay) 
+        {
+            Console.Write($"Day {currentDay}: ");
+        }
+        public static void DisplayWelcome(Player player)
+        {
+            Console.Clear();
+            Console.WriteLine($"Welcome {player.name}, please enter your first recipe!");
+        }
         public static int GetNumberOfItems(string itemsToGet)
         {
             bool userInputIsAnInteger = false;
@@ -121,6 +130,21 @@ namespace LemonadeStand_3DayStarter
         public static void DisplayCupsOfLemonade(Player player)
         {
             Console.WriteLine($"Plastic Cups Left: {player.inventory.cups.Count}");
+        }
+
+
+        public static void DisplayEndGameMessage(int currentDay, Player player)
+        {
+            Console.Clear();
+            Console.WriteLine("End of the Game.");
+            Console.WriteLine($"You made it to Day {currentDay} and ended with a total of ${player.wallet.Money}");
+            Console.ReadLine();
+        }
+
+        public static void DisplayMoneyMessage(int currentDay)
+        {
+            Console.WriteLine($"You've run out of money on Day {currentDay}!");
+            Console.ReadLine();
         }
     }
 }

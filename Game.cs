@@ -27,8 +27,7 @@ namespace LemonadeStand_3DayStarter
             amountOfDays = UserInterface.GetNumberOfDays();
             currentDay = 1;
             days = new List<Day>() { day };
-            Console.Clear();
-            Console.WriteLine($"Welcome {player.name}, please enter your first recipe!");
+            UserInterface.DisplayWelcome(player);
             player.recipe.CreateRecipe();
             UserInterface.DisplayRecipe(player.recipe);
 
@@ -42,7 +41,7 @@ namespace LemonadeStand_3DayStarter
                     if (player.wallet.Money > 0)
                     {
                         Console.Clear();
-                        Console.Write($"Day {currentDay}: ");
+                        UserInterface.DisplayCurrentDay(currentDay);
                         UserInterface.GetWeatherConditions(days[currentDay - 1]);
                         UserInterface.DisplayWallet(player.wallet);
                         UserInterface.DisplayCupsOfLemonade(player);
@@ -51,8 +50,7 @@ namespace LemonadeStand_3DayStarter
                     }
                     else
                     {
-                        Console.WriteLine($"You've run out of money on Day {currentDay}!");
-                        Console.ReadLine();
+                        UserInterface.DisplayMoneyMessage(currentDay);
                         return;
                     }
                 }
@@ -60,10 +58,7 @@ namespace LemonadeStand_3DayStarter
                     currentDay++;
                
             }
-            Console.Clear();
-            Console.WriteLine("End of the Game.");
-            Console.WriteLine($"You made it to Day {currentDay} and ended with a total of ${player.wallet.Money}");
-            Console.ReadLine();
+           UserInterface.DisplayEndGameMessage(currentDay, player);
 
         }
 
