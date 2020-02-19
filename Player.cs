@@ -32,6 +32,8 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine($"3. Ice Cubes: {inventory.iceCubes.Count}");
             Console.WriteLine($"4. Total cups of lemonade: { pitcher.cupsOfLemonade}");
             Console.WriteLine($"5. Total pitchers of lemonade: {pitcher.pitchersOfLemonade}");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
         }
         public void BuyItems(Store store, Player player, int item)
         {

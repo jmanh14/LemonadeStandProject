@@ -14,7 +14,7 @@ namespace LemonadeStand_3DayStarter
         public Pitcher()
         {
             pitchersOfLemonade = 0;
-            cupsOfLemonade = 0;
+            //cupsOfLemonade = pitchersOfLemonade * cupsPerPitcher;
         }
 
         public void AddCups(Player player)
@@ -31,7 +31,7 @@ namespace LemonadeStand_3DayStarter
                 }
                 catch (ArgumentException)
                 {
-                    Console.WriteLine("Out of Product!");
+                    Console.WriteLine("Cannot make any more pitchers.");
                     break;
                 }
             }

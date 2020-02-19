@@ -13,6 +13,7 @@ namespace LemonadeStand_3DayStarter
         public int amountOfIceCubes;
         public double pricePerCup;
         public string sweetness;
+        public string name;
 
         public Recipe()
         {
@@ -47,22 +48,27 @@ namespace LemonadeStand_3DayStarter
             if (lemons >= 5 && sugarCubes < 5 && iceCubes >= 1)
             {
                 sweetness = "Sour";
+                name = "The Sour Lemon";
             }
             else if (lemons < 5 && sugarCubes >= 5 && iceCubes >= 1)
             {
                 sweetness = "Sweet";
+                name = "The Sweet Sally";
             }
             else if (iceCubes >= 5)
             {
                 sweetness = "Watery";
+                name = "The Sno-Cone";
             }
             else if (lemons == sugarCubes && iceCubes < 5)
             {
                 sweetness = "Balanced";
+                name = "The Standard";
             }
             else 
             {
                 sweetness = "Bland";
+                name = "The Eh";
             }
         }
     }

@@ -21,7 +21,7 @@ namespace LemonadeStand_3DayStarter
 
         public Wallet()
         {
-            money = 100.00;
+            money = 50.00;
         }
 
         public void PayMoneyForItems(double transactionAmount)
