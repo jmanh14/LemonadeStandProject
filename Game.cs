@@ -93,6 +93,12 @@ namespace LemonadeStand_3DayStarter
                 player.recipe.CreateRecipe();
                 UserInterface.DisplayRecipe(player.recipe);
             }
+            else
+            {
+                Console.WriteLine("Invalid input...");
+                Console.ReadLine();
+                menuOption = UserInterface.BuySellInvRecipeOption();
+            }
         }
        
 

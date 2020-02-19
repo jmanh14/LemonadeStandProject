@@ -40,6 +40,7 @@ namespace LemonadeStand_3DayStarter
             }
             catch (FormatException)
             {
+                Console.Clear();
                 CreateRecipe();
             }
         }

@@ -33,6 +33,10 @@ namespace LemonadeStand_3DayStarter
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddLemonsToInventory(lemonsToPurchase);
             }
+            else
+            {
+                Console.WriteLine("No money");
+            }
         }
 
         public void SellSugarCubes(Player player)
@@ -43,6 +47,10 @@ namespace LemonadeStand_3DayStarter
             {
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddSugarCubesToInventory(sugarToPurchase);
+            }
+            else
+            {
+                Console.WriteLine("No money");
             }
         }
 
@@ -55,6 +63,10 @@ namespace LemonadeStand_3DayStarter
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddIceCubesToInventory(iceCubesToPurchase);
             }
+            else
+            {
+                Console.WriteLine("No money");
+            }
         }
 
         public void SellCups(Player player)
@@ -65,6 +77,10 @@ namespace LemonadeStand_3DayStarter
             {
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddCupsToInventory(cupsToPurchase);
+            }
+            else
+            {
+                Console.WriteLine("No money");
             }
         }
 
