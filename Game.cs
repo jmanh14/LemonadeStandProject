@@ -51,7 +51,8 @@ namespace LemonadeStand_3DayStarter
                     }
                     else
                     {
-                        Console.WriteLine("You've run out of money!");
+                        Console.WriteLine($"You've run out of money on Day {currentDay}!");
+                        Console.ReadLine();
                         return;
                     }
                 }
@@ -59,8 +60,9 @@ namespace LemonadeStand_3DayStarter
                     currentDay++;
                
             }
+            Console.Clear();
             Console.WriteLine("End of the Game.");
-            Console.WriteLine($"You ended with a total of ${player.wallet.Money}");
+            Console.WriteLine($"You made it to Day {currentDay} and ended with a total of ${player.wallet.Money}");
             Console.ReadLine();
 
         }

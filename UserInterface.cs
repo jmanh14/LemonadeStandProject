@@ -82,6 +82,7 @@ namespace LemonadeStand_3DayStarter
         public static void DisplayRecipe(Recipe recipe)
         {
             Console.Clear();
+            
             Console.WriteLine($"RECIPE: ({recipe.name})");
             Console.WriteLine("------------------------");
             Console.WriteLine($"1. Lemons: {recipe.amountOfLemons}");
@@ -90,6 +91,7 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine($"4. Price per cup: ${recipe.pricePerCup}");
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
+            Console.ResetColor();
         }
 
         public static string WouldYouLikeToContinue()
