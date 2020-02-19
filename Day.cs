@@ -17,24 +17,26 @@ namespace LemonadeStand_3DayStarter
             customers = new List<Customer>() { };
             DetermineAmountOfCustomers(weather, rng);
         }
+        
         public void DetermineAmountOfCustomers(Weather weather ,Random randomNum)
         {
-            int amountOfCustomers = 0;
+            double amountOfCustomers = 0;
+            double maxAmountOfCustomers = 50;
             if (weather.temperature >= 70)
             {
-                amountOfCustomers = 50;
+                amountOfCustomers = maxAmountOfCustomers;
             }
             else if (weather.temperature < 70 && weather.temperature >= 60)
             {
-                amountOfCustomers = 30;
+                amountOfCustomers = Math.Round(maxAmountOfCustomers * .66);
             }
             else if (weather.temperature < 60 && weather.temperature >= 50)
             {
-                amountOfCustomers = 20;
+                amountOfCustomers = Math.Round(maxAmountOfCustomers * .5);
             }
             else
             {
-                amountOfCustomers = 10;
+                amountOfCustomers = Math.Round(maxAmountOfCustomers * .2);
             }
             for (int i = 0; i < amountOfCustomers; i++)
             {

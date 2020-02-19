@@ -8,6 +8,11 @@ namespace LemonadeStand_3DayStarter
 {
     class Customer
     {
+        //Open-Closed Principle
+        //This class is closed to modification because there isnt anything else a customer needs
+        //You dont need to add more code to this class to make the project work
+        //This class is open to extention because you can add more names, pay preferences and tastes to the lists
+        //You can add more names, preferences and the program will stil work
         private List<string> firstNames;
         private List<string> lastNames;
         public string firstName;

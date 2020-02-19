@@ -21,6 +21,10 @@ namespace LemonadeStand_3DayStarter
             temperature = Gettemperature(rng);
         }
         //Member methods (CAN DO)
+        //Single-Responsibility Principle
+        //This method only gets the temperature dependent on the condition
+        //This method takes in the condition and compares it to the randomly generated conditon
+        //it then sets the temperature to a random value.
         public int Gettemperature(Random rng)
         {
             if (condition == "Sunny")
