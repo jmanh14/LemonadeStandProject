@@ -13,15 +13,15 @@ namespace LemonadeStand_3DayStarter
         public Wallet wallet;
         public string name;
         public Recipe recipe;
-        public Pitcher pitcher = new Pitcher();
+        public Pitcher pitcher;
 
         // constructor (SPAWNER)
         public Player()
         {
             inventory = new Inventory();
-            wallet = new Wallet();
-            
+            wallet = new Wallet();           
             recipe = new Recipe();
+            pitcher = new Pitcher();
         }
 
         // member methods (CAN DO)
@@ -39,7 +39,7 @@ namespace LemonadeStand_3DayStarter
         {
             if (item == 1)
             {
-                store.SellLemons(player);
+                store.SellLemons(this);
             }
             else if (item == 2)
             {
@@ -103,12 +103,12 @@ namespace LemonadeStand_3DayStarter
                 else
                 {
                     Console.WriteLine("No lemonade left to sell!");
-                    Console.WriteLine($"{buyerCounter} out of {day.customers.Count} customers bought lemonade.");
+                    UserInterface.DesplayCustomerCount(buyerCounter, day);
                     return;
                 }
             }
 
-            Console.WriteLine($"{buyerCounter} out of {day.customers.Count} customers bought lemonade.");
+            UserInterface.DesplayCustomerCount(buyerCounter, day); 
             return;
         }
     }

@@ -15,12 +15,12 @@ namespace LemonadeStand_3DayStarter
         //You can add more names, preferences and the program will stil work
         private List<string> firstNames;
         private List<string> lastNames;
-        public string firstName;
-        public string lastName;
+        private string firstName;
+        private string lastName;
         public string fullName;
-        public List<double> payPreferences;
+        private List<double> payPreferences;
         public double payPreference;
-        public List<string> tastePreferences;
+        private List<string> tastePreferences;
         public string tastePreference;
         public Customer(Random rng)
         {

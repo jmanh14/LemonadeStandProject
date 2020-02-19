@@ -139,11 +139,24 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("End of the Game.");
             Console.WriteLine($"You made it to Day {currentDay} and ended with a total of ${player.wallet.Money}");
             Console.ReadLine();
+            return;
         }
 
         public static void DisplayMoneyMessage(int currentDay)
         {
             Console.WriteLine($"You've run out of money on Day {currentDay}!");
+            Console.ReadLine();
+            return;
+        }
+
+        public static void DesplayCustomerCount(int buyerCounter, Day day)
+        {
+            Console.WriteLine($"{buyerCounter} out of {day.customers.Count} customers bought lemonade.");
+        }
+
+        public static void DisplayMoneyInvMessage(int currentDay)
+        {
+            Console.WriteLine($"You've run out of product and money on Day {currentDay}");
             Console.ReadLine();
         }
     }
