@@ -35,7 +35,7 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
         }
-        public void BuyItems(Store store, Player player, int item)
+        public void BuyItems(Store store, int item)
         {
             if (item == 1)
             {
@@ -43,21 +43,21 @@ namespace LemonadeStand_3DayStarter
             }
             else if (item == 2)
             {
-                store.SellSugarCubes(player);
+                store.SellSugarCubes(this);
             }
             else if (item == 3)
             {
-                store.SellIceCubes(player);
+                store.SellIceCubes(this);
             }
             else if (item == 4)
             {
-                store.SellCups(player);
+                store.SellCups(this);
             }
             else
             {
                 item = UserInterface.ItemToBuyMenu(store);
-                BuyItems(store, player, item);
-                pitcher.AddCups(player);
+                BuyItems(store, item);
+                pitcher.AddCups(this);
             }
         }
         public void SellLemonade(Day day)

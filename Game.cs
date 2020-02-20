@@ -74,7 +74,7 @@ namespace LemonadeStand_3DayStarter
             if (menuOption == 1)
             {
                 itemToBuy = UserInterface.ItemToBuyMenu(store);
-                player.BuyItems(store,player,itemToBuy);
+                player.BuyItems(store,itemToBuy);
                 
             }
             else if (menuOption == 2)
